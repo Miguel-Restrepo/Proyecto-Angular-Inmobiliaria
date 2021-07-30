@@ -1,0 +1,54 @@
+<div class="table-title center-align">
+  <div class="row">
+    <div class="col-sm-6">
+      <h4 class="grey-text text-lighten-4">Administración país</h4>
+    </div>
+    <div class="col-sm-6"></div>
+    <button
+      class="waves-effect waves-light btn modal-trigger"
+      data-target="modal1"
+      [routerLink]="[
+        '/parametrizacion',
+        { outlets: { modal: ['crear-pais'] } }
+      ]"
+    >
+      <i class="material-icons left">&#xE147;</i> <span>Crear País</span>
+    </button>
+  </div>
+</div>
+<table class="highlight responsive-table">
+  <thead class="white-text">
+    <tr>
+      <th class="center-align">Codigo</th>
+      <th class="center-align">Nombre</th>
+      <th class="center-align">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let x of lista">
+      <td class="center-align">
+        {{ x.codigo }}
+      </td>
+      <td class="center-align">
+        {{ x.nombre }}
+      </td>
+      <td class="center-align">
+        <a class="edit" routerLink="../editar-pais/{{ x.codigo }}"
+          ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
+        >
+        <a
+          class="delete modal-trigger"
+          data-target="modal1"
+          (click)="ponerid(x.codigo,x.nombre)"
+          [routerLink]="[
+            '/parametrizacion',
+            { outlets: { modal: ['eliminar-pais'] } }
+          ]"
+          ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
+        >
+        
+      </td>
+    </tr>
+  </tbody>
+</table>

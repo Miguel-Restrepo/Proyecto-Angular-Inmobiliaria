@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col s12 m6" *ngFor="let x of lista; let i = index">
+    <div class="card large hoverable">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img
+          class="activator"
+          src="assets/documentosVarios/proyectos/{{x.imagen}}"
+          (click)="btnClick(i)"
+        />
+      </div>
+      <div class="card-content" id="{{ 'card' + i }}">
+        <span
+          class="card-title activator grey-text text-lighten-4"
+          (click)="btnClick(i)"
+          >{{ x.nombre }}<i class="material-icons right">more_vert</i></span
+        >
+        <p class="grey-text text-lighten-3">
+          {{ x.descripcion.slice(0, 100) }}...
+        </p>
+        <div class="card-action">
+          <button *ngIf="logeado"
+            class="waves-effect waves-light btn activator"
+            routerLink="../ventas/crear-solicitud/{{x.codigo}}"
+          >
+            Separar Inmueble
+          </button>
+        </div>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-lighten-4" (click)="btnClick(i)"
+          >{{ x.nombre }}<i class="material-icons right">close</i></span
+        >
+
+        <p>Pais: {{ x.pais }}</p>
+
+        <p>Ciudad: {{ x.ciudad }}</p>
+
+        <p>Descripción: {{ x.descripcion }}</p>
+
+        <p>Inmuebles disponibles: {{ x.inmueblesDisponibles }}</p>
+      </div>
+    </div>
+  </div>
+</div>

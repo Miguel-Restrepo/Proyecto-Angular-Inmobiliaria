@@ -1,0 +1,146 @@
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo"
+      ><img
+        class="responsive-img"
+        id="logo"
+        src="assets/proyectsImages/icono.png"
+    /></a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+      ><i class="material-icons">menu</i></a
+    >
+    <ul class="right hide-on-med-and-down">
+      <li *ngIf="logeado">
+        <a class="sidenav-trigger show-on-large" data-target="menu-side">
+          Modulos
+        </a>
+      </li>
+      <li *ngIf="!logeado">
+        <a routerLink="seguridad/iniciar-sesion">Iniciar sesión</a>
+      </li>
+      <li *ngIf="logeado">
+        <a routerLink="">Sesión iniciada como: {{ nombreC }}</a>
+      </li>
+      <li *ngIf="logeado">
+        <a routerLink="seguridad/cerrar-sesion">Cerrar sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ul id="menu-side" class="sidenav">
+  <li>
+    <a routerLink="inicio" class="sidenav-close">
+      <i class="material-icons white-text">home</i><span>Inicio</span>
+    </a>
+  </li>
+  <li>
+    <a routerLink="usuario/listar-usuario" class="sidenav-close">
+      <i class="material-icons white-text">security</i>
+      <span>Seguridad</span>
+    </a>
+  </li>
+  <li *ngIf="rol == 'Administrador'">
+    <a class="dropdown-trigger" data-target="dropdown1">
+      <i class="material-icons white-text">edit</i>
+      <span>Parametrización</span>
+      <i class="material-icons white-text right">arrow_drop_down</i>
+    </a>
+  </li>
+  <li *ngIf="rol == 'Vendedor'">
+    <a class="dropdown-trigger" data-target="dropdown3"
+      ><i class="material-icons white-text">payment</i><span>Ventas</span>
+      <i class="material-icons white-text right">arrow_drop_down</i>
+    </a>
+  </li>
+  <li>
+    <a class="dropdown-trigger" data-target="dropdown2"
+      ><i class="material-icons white-text">description</i><span>Informes</span>
+      <i class="material-icons white-text right">arrow_drop_down</i>
+    </a>
+  </li>
+  <li>
+    <a routerLink="seguridad/cambiar-contrasena" class="sidenav-close">
+      <i class="material-icons white-text">security</i>
+      <span>Cambiar contraseña</span>
+    </a>
+  </li>
+</ul>
+
+<ul id="dropdown1" class="dropdown-content">
+  <li>
+    <a routerLink="parametrizacion/listar-pais" class="sidenav-close">País</a>
+  </li>
+  <li>
+    <a routerLink="parametrizacion/listar-ciudad" class="sidenav-close"
+      >Ciudad</a
+    >
+  </li>
+  <li>
+    <a routerLink="parametrizacion/listar-proyecto" class="sidenav-close"
+      >Proyecto</a
+    >
+  </li>
+  <li>
+    <a routerLink="parametrizacion/listar-bloque" class="sidenav-close"
+      >Bloque</a
+    >
+  </li>
+  <li>
+    <a routerLink="parametrizacion/listar-inmueble" class="sidenav-close"
+      >Inmueble</a
+    >
+  </li>
+</ul>
+
+<ul id="dropdown2" class="dropdown-content">
+  <li>
+    <a routerLink="informes/informe-pagos" class="sidenav-close"
+      >Informes pagos</a
+    >
+  </li>
+  <li>
+    <a routerLink="informes/informe-proyectos" class="sidenav-close"
+      >Informes proyectos</a
+    >
+  </li>
+  <li>
+    <a routerLink="informes/informe-ventas" class="sidenav-close"
+      >Informes ventas</a
+    >
+  </li>
+</ul>
+
+<ul id="dropdown3" class="dropdown-content">
+  <li>
+    <a routerLink="ventas/listar-cliente" class="sidenav-close">Clientes</a>
+  </li>
+  <li>
+    <a routerLink="ventas/listar-solicitud" class="sidenav-close"
+      >Solicitudes de Estudio</a
+    >
+  </li>
+  <li>
+    <a routerLink="ventas/listar-pago" class="sidenav-close">Pagos</a>
+  </li>
+</ul>
+
+<ul class="sidenav" id="mobile-demo">
+  <li *ngIf="rol == 'Administrador'">
+    <a class="sidenav-trigger sidenav-close" data-target="menu-side">
+      Administrador
+    </a>
+  </li>
+  <!-- <li><a routerLink="sass.html">Sass</a></li>
+  <li><a routerLink="badges.html">Components</a></li>
+  <li><a routerLink="collapsible.html">Javascript</a></li>-->
+  <li *ngIf="!logeado">
+    <a routerLink="seguridad/iniciar-sesion">Iniciar sesión</a>
+  </li>
+  <li *ngIf="logeado">
+    <a routerLink="">{{ nombreC }}</a>
+  </li>
+  <li *ngIf="logeado">
+    <a routerLink="seguridad/cerrar-sesion">Cerrar sesión</a>
+  </li>
+</ul>

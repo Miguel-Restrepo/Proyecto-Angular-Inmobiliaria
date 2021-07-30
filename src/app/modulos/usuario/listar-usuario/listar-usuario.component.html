@@ -1,0 +1,81 @@
+<div class="table-title center-align">
+  <div class="row">
+    <div class="col-sm-6">
+      <h4 class="grey-text text-lighten-4">Administración usuarios</h4>
+    </div>
+    <div class="col-sm-6">
+      <button
+        [routerLink]="['/usuario', { outlets: { modal: ['crear-usuario'] } }]"
+        class="waves-effect waves-light btn modal-trigger"
+        data-target="modal1"
+        *ngIf="rol == 'Administrador'"
+      >
+        <i class="material-icons left">&#xE147;</i> <span>Crear Usuario</span>
+      </button>
+    </div>
+  </div>
+</div>
+<table class="highlight responsive-table">
+  <thead class="white-text">
+    <tr>
+      <th class="center-align">Nombre</th>
+      <th class="center-align">Apellido 1</th>
+      <th class="center-align">Apellido 2</th>
+      <th class="center-align">Celular</th>
+      <th class="center-align">Ciudad</th>
+      <th class="center-align">Correo</th>
+      <th class="center-align">Documento</th>
+      <th class="center-align">Rol</th>
+      <th class="center-align">Usuario</th>
+      <th class="center-align">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let x of lista">
+      <td class="center-align">
+        {{ x.Nombre }}
+      </td>
+      <td class="center-align">
+        {{ x.Apellido_1 }}
+      </td>
+      <td class="center-align">
+        {{ x.Apellido_2 }}
+      </td>
+      <td class="center-align">
+        {{ x.Celular }}
+      </td>
+      <td class="center-align">
+        {{ x.Ciudad }}
+      </td>
+      <td class="center-align">
+        {{ x.Correo }}
+      </td>
+      <td class="center-align">
+        {{ x.Documento }}
+      </td>
+      <td class="center-align">
+        {{ x.Rol }}
+      </td>
+      <td class="center-align">
+        {{ x.Usuario }}
+      </td>
+      
+      <td class="center-align">
+        <a class="edit" routerLink="../editar-usuario/{{ x.Documento }}"
+          ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
+        >
+        <a
+        class="delete modal-trigger"
+        data-target="modal1"
+        (click)="ponerid(x.Documento,x.Nombre)"
+        [routerLink]="[
+          '/parametrizacion',
+          { outlets: { modal: ['eliminar-usuario'] } }
+        ]"
+        ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
+      >
+      </td>
+    </tr>
+  </tbody>
+</table>
